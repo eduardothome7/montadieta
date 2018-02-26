@@ -1,0 +1,50 @@
+<div class="col m6 s12">
+	<div class="item">
+      	<!-- <i class="material-icons">access_time</i> <%= meal.time_at.strftime("%H:%M") %><%= meal.name %> -->
+      	<h3 class="header"><%= meal.name %></h3>
+		<table id="food_meal_list" class="striped">
+			<thead>
+	          <tr>
+	              <th>(g)</th>
+	              <th>Alimento</th>
+	              <th class="centered">P(g)</th>
+	              <th class="centered">C(g)</th>
+	              <th class="centered">G(g)</th>
+	              <th class="centered">KCal</th>
+	          </tr>
+	        </thead>
+			<tbody>
+				<div class="meal_list_foods">
+					<% meal.meal_foods.each do |meal_food| %>
+						<%= render "foods/food", food: meal_food.food %>
+					<% end %>
+				</div>
+				<tr class="add_tr_food">
+					<td><input type="number" class="input_cell" value="0.00"></td>	
+					<td class="selectModalTd"><text style="color: #999">Selecionar alimento</text></td>	
+					<td class="centered"><text style="color: #999">0</text></td>	
+					<td class="centered"><text style="color: #999">0</text></td>	
+					<td class="centered"><text style="color: #999">0</text></td>	
+					<td class="centered"><text style="color: #999">0</text></td>	
+				</tr>
+			</tbody>
+			<tfoot>
+	        	<tr>
+	           		<td colspan="2"><strong>Total<strong></td>
+	           		<td class="centered" id="total_meal_p"><strong>0<strong></td>
+	          		<td class="centered" id="total_meal_c"><strong>0<strong></td>
+	           		<td class="centered" id="total_meal_g"><strong>0<strong></td>
+	           		<td class="centered" id="total_meal_k"><strong>0<strong></td>
+	        	</tr>
+        	</tfoot>
+		</table>
+	</div>
+</div>
+
+<script>
+	$('.modal').modal();
+
+	$('.selectModalTd').click(function(){
+		$('#select-food').modal('open');
+	});
+</script>

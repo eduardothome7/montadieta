@@ -1,0 +1,7 @@
+<% @foods.each do |food| %>
+	$('#food-list-search').append('<%= escape_javascript render("foods/food", food: food) %>');
+<% end %>
+
+$('.input_cell').change(function(){	
+	calcFood($(this));
+});

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  diet_id: 1
+  name: MyString
+  time_at: 2018-02-23 13:36:07
+
+two:
+  diet_id: 1
+  name: MyString
+  time_at: 2018-02-23 13:36:07

@@ -1,0 +1,32 @@
+<%= form_for([meal.diet, meal], local: true) do |form| %>
+  <% if meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
+
+      <ul>
+      <% meal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :diet_id %>
+    <%= form.number_field :diet_id, id: :meal_diet_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :meal_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_at %>
+    <%= form.datetime_select :time_at, id: :meal_time_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

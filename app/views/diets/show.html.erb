@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Objetivo:</strong>
+  <%= @diet.objective %>
+</p>
+
+<p>
+  <strong>TBM</strong>
+  <%= @diet.tmb %>
+</p>
+
+<p>
+  <strong>KCal:</strong>
+  <%= @diet.kcal %>
+</p>
+
+<p id="notice"><%= notice %></p>
+
+<a href="#!" class="btn teal" id="a_add_meal" data-diet_id="<%= @diet.id %>">Adicionar Refeição</a>
+
+<%= render 'meals/index', meals: @meals %>
+
+
+<!-- Modal Structure -->
+<div id="select-food" class="modal">
+    <div class="modal-content">
+    	<h4>Adicionar alimento</h4>
+      	<div class="input-field col s6">
+        	<i class="material-icons prefix">search</i>
+          	<input id="icon_prefix"	class="search_food" type="text" placeholder="Buscar..." class="validate">
+        </div>
+        <table id="food_meal_list" class="striped">
+			<thead>
+	        	<tr>
+	             	<th>(g)</th>
+	              	<th>Alimento</th>
+	              	<th class="centered">P(g)</th>
+	              	<th class="centered">C(g)</th>
+	              	<th class="centered">G(g)</th>
+	              	<th class="centered">KCal</th>
+  				</tr>
+	        </thead>
+			<tbody id="food-list-search"></tbody>
+		</table>		
+	</div>
+	<div class="modal-footer">
+    	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	</div>
+</div>
