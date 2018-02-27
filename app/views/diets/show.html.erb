@@ -23,9 +23,10 @@
 
 
 <!-- Modal Structure -->
-<div id="select-food" class="modal">
+<div id="select-food" data-diet_id="<%= @diet.id %>" class="modal modal-fixed-footer">
     <div class="modal-content">
     	<h4>Adicionar alimento</h4>
+    	<input type="hidden" value="" id="modal_meal_id" name="modal_meal_id">
       	<div class="input-field col s6">
         	<i class="material-icons prefix">search</i>
           	<input id="icon_prefix"	class="search_food" type="text" placeholder="Buscar..." class="validate">
@@ -33,6 +34,7 @@
         <table id="food_meal_list" class="striped">
 			<thead>
 	        	<tr>
+	        		<th></th>
 	             	<th>(g)</th>
 	              	<th>Alimento</th>
 	              	<th class="centered">P(g)</th>
@@ -41,10 +43,14 @@
 	              	<th class="centered">KCal</th>
   				</tr>
 	        </thead>
-			<tbody id="food-list-search"></tbody>
+			<tbody id="food-list-search">
+				<% Food.all.each do |food| %>
+					<%= render("foods/food", food: food, select: true) %>
+				<% end %>
+			</tbody>
 		</table>		
 	</div>
 	<div class="modal-footer">
-    	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    	<a href="#!" class="modal-action modal-close btn teal waves-effect waves-green btn-flat">Incluir</a>
 	</div>
 </div>

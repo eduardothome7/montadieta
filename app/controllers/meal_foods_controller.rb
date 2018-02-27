@@ -1,5 +1,6 @@
 class MealFoodsController < ApplicationController
   before_action :set_meal_food, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /meal_foods
   # GET /meal_foods.json
@@ -35,6 +36,14 @@ class MealFoodsController < ApplicationController
         format.json { render json: @meal_food.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def add
+    @meal_food = MealFood.new(meal_id:params[:meal_id], food_id:params[:food_id] ,weight:params[:weight])
+
+    @meal_food.save
+    respond_to :js
+
   end
 
   # PATCH/PUT /meal_foods/1

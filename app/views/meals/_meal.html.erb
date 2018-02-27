@@ -14,14 +14,14 @@
 	          </tr>
 	        </thead>
 			<tbody>
-				<div class="meal_list_foods">
-					<% meal.meal_foods.each do |meal_food| %>
-						<%= render "foods/food", food: meal_food.food %>
-					<% end %>
+				
+				<div id="meal_list_foods_<%= meal.id %>" class="meal_list_foods">
+					<%= render("meal_foods/list", meal_foods: meal.meal_foods) %>
 				</div>
+				
 				<tr class="add_tr_food">
 					<td><input type="number" class="input_cell" value="0.00"></td>	
-					<td class="selectModalTd"><text style="color: #999">Selecionar alimento</text></td>	
+					<td class="selectModalTd" data-meal_id="<%= meal.id %>"><text style="color: #999">Selecionar alimento</text></td>	
 					<td class="centered"><text style="color: #999">0</text></td>	
 					<td class="centered"><text style="color: #999">0</text></td>	
 					<td class="centered"><text style="color: #999">0</text></td>	
@@ -45,6 +45,8 @@
 	$('.modal').modal();
 
 	$('.selectModalTd').click(function(){
+
 		$('#select-food').modal('open');
+		$('#modal_meal_id').val($(this).data('meal_id'));
 	});
 </script>

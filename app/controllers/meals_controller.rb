@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-  before_action :set_diet, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_diet, only: [:index, :show, :new, :create, :edit, :update, :destroy, :update_list]
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
 
@@ -12,6 +12,11 @@ class MealsController < ApplicationController
   # GET /meals/1
   # GET /meals/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.js
+    end
   end
 
   # GET /meals/new
@@ -60,6 +65,7 @@ class MealsController < ApplicationController
     end
   end
 
+  
   # PATCH/PUT /meals/1
   # PATCH/PUT /meals/1.json
   def update

@@ -23,10 +23,10 @@ function calcFood(food){
 	var kcal 	= food.data('food_kcal');
 	var qtd 	= food.val();
 
-	total_protein = protein * qtd;
-	total_carb 	= carb * qtd;
-	total_fat 	= fat * qtd;
-	total_kcal 	= kcal * qtd;
+	total_protein 	= protein * qtd;
+	total_carb 		= carb * qtd;
+	total_fat 		= fat * qtd;
+	total_kcal 		= kcal * qtd;
 
 	food.parent().siblings('.td_food_protein').text(total_protein.toFixed(2));
 	food.parent().siblings('.td_food_carb').text(total_carb.toFixed(2));
@@ -51,9 +51,6 @@ $(document).ready(function(){
 
 	$('.modal').modal();
 
-	$('.selectModalTd').click(function(){
-		$('#select-food').modal('open');
-	});
 
 	$('.search_food').keyup(function(){
 		var key = $(this).val();
@@ -70,6 +67,42 @@ $(document).ready(function(){
 
 	$('.input_cell').change(function(){	
 		calcFood($(this));
+	});
+
+	$('.selectModalTd').click(function(){
+		$('#select-food').modal('open');
+		$('#modal_meal_id').val($(this).data('meal_id'));
+	});
+
+	$('.modal-close').click(function(){
+
+		var diet_id = $('#select-food').data('diet_id');
+		var meal_id = $('#modal_meal_id').val();
+
+		$("input[name='food_ids[]']:checked").each( function () {
+			
+			var food_id = $(this).val();
+			var food_qtd = $('#food_qtd_'+food_id).val();
+
+			$.ajax({
+				url: '/meal_foods/add.js',
+				data: { weight: food_qtd, food_id: food_id, meal_id: meal_id },
+				dataType: 'script',
+				async: false
+			});
+		});
+
+		$.ajax({
+			url: '/diets/'+diet_id+'/meals/'+meal_id+'.js',
+			dataType: 'script',
+			success: function(data){
+				alert(data);
+				// $("#meal_list_foods_<%= @meal.id %>").html
+			},
+			error: function(){
+			}
+		});
+
 	});
 
 });

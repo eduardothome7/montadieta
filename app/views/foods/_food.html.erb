@@ -1,10 +1,15 @@
 <tr>
-	<td> <input type="number" 
+	<td style="width: 30px"><!-- <input name="check_select_food" data-food_id="<%= food.id %>" data-meal_id="" id="<%= food.id %>" type="checkbox"> -->
+		<input type="checkbox" id="food_<%= food.id %>" name="food_ids[]" value="<%= food.id %>" />
+    	<label for="food_<%= food.id %>"></label>
+	</td>
+	<td style="width: 30px"> <input type="number" 
 			    data-food_id="<%= food.id %>" 
 				data-food_protein="<%= food.protein %>" 
 				data-food_carb="<%= food.carb %>" 
 				data-food_fat="<%= food.fat %>" 
-				data-food_kcal="<%= food.kcal %>" class="input_cell" value="0.1"></td>	
+				data-food_kcal="<%= food.kcal %>" id="food_qtd_<%= food.id %>" class="input_cell" value="0.1"></td>	
+	
 	<td><%= food.name %></td>	
 	<td class="centered td_food_protein"><%= food.protein %></td>	
 	<td class="centered td_food_carb"><%= food.carb %></td>	

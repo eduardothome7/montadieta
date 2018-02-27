@@ -14,8 +14,14 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :meal_foods
+  resources :meal_foods do 
+    collection do
+      get :add
+    end
+  end
 
   resources :category_foods
+
+  root 'diets#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
 
   def search
     @foods = Food.where('name LIKE ?', "%#{params[:key].parameterize}%") 
-
+    
     respond_to do |format|
       format.js 
     end

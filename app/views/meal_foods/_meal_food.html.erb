@@ -1,0 +1,14 @@
+<tr>
+	<td style="width: 30px"> <input type="number" 
+			    data-food_id="<%= meal_food.food.id %>" 
+				data-food_protein="<%= meal_food.food.protein %>" 
+				data-food_carb="<%= meal_food.food.carb %>" 
+				data-food_fat="<%= meal_food.food.fat %>" 
+				data-food_kcal="<%= meal_food.food.kcal %>" id="food_qtd_<%= meal_food.food.id %>" class="input_cell" value="<%= meal_food.weight %>"></td>	
+	
+	<td><%= meal_food.food.name %></td>	
+	<td class="centered td_food_protein"><%= meal_food.food.protein %></td>	
+	<td class="centered td_food_carb"><%= meal_food.food.carb %></td>	
+	<td class="centered td_food_fat"><%= meal_food.food.fat %></td>	
+	<td class="centered td_food_kcal"><%= meal_food.food.kcal %></td>	
+</tr>
